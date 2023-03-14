@@ -1,10 +1,14 @@
 const mongoose = require("mongoose");
-
+const { v4: uuidv4 } = require("uuid");
 
 // create a schema for a book.
 // fields: title, isbn, author, description, published_date,
 // publisher, updated_date
 const BookSchema =  new mongoose.Schema({
+    id: {
+        type: String,
+        default: uuidv4()
+    },
     title: {
         type: String,
         required: true

@@ -21,8 +21,10 @@ connectDB();
 //allow cross origin requests (this is for production)
 //production code = code that hasn't been released
 app.use(cors({ origin: true, credentials: true}))
+app.options("*", cors());
 
 //middle ware 
+// allows us to modify POST requests 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
@@ -31,9 +33,6 @@ app.get('/', (req, res) => res.send("Hello World!"));
 
 // use books routes
 app.use('/api/books', books);
-
-
-
 
 
 //sets the port defaults to 8000
